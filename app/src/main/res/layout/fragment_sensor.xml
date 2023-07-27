@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_orange_light">
+
+    <TextView
+        android:id="@+id/textview_information_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/millard_bold"
+        android:text="Live Sensor Readings"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textview_temperature_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Temperature"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/textview_humidity_header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_information_header" />
+
+    <TextView
+        android:id="@+id/textview_humidity_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Humidity"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textview_temperature_header"
+        app:layout_constraintTop_toBottomOf="@+id/textview_information_header" />
+
+    <TextView
+        android:id="@+id/textview_temperature_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:text="0°F"
+        android:textColor="@color/black"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="@+id/textview_temperature_header"
+        app:layout_constraintStart_toStartOf="@+id/textview_temperature_header"
+        app:layout_constraintTop_toBottomOf="@+id/textview_temperature_header" />
+
+    <TextView
+        android:id="@+id/textview_humidity_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:text="0%"
+        android:textColor="@color/black"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="@+id/textview_humidity_header"
+        app:layout_constraintStart_toStartOf="@+id/textview_humidity_header"
+        app:layout_constraintTop_toBottomOf="@+id/textview_humidity_header" />
+
+    <TextView
+        android:id="@+id/textview_vibration_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Vibration Sensor"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_temperature_text" />
+
+    <TextView
+        android:id="@+id/textview_vibration_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:text="OFF"
+        android:textColor="#E63E3E"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="@+id/textview_vibration_header"
+        app:layout_constraintStart_toStartOf="@+id/textview_vibration_header"
+        app:layout_constraintTop_toBottomOf="@+id/textview_vibration_header" />
+</androidx.constraintlayout.widget.ConstraintLayout>
