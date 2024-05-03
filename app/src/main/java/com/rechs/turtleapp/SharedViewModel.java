@@ -15,19 +15,19 @@ public class SharedViewModel extends ViewModel {
     // Live Data that will keep track of sensor things
     private MutableLiveData<Float> temperatureReading = new MutableLiveData<>();
     private MutableLiveData<Integer> humidityReading = new MutableLiveData<>();
-    private MutableLiveData<Integer> vibrationReading = new MutableLiveData<>();
+    private MutableLiveData<Integer> decibelReading = new MutableLiveData<>();
 
     /**
      * Direction Things
      */
 
-    public void setDirectionNum(Integer input) {
+    /* public void setDirectionNum(Integer input) {
         directionNum.setValue(input);
     }
 
     public LiveData<Integer> getDirectionNum() {
         return directionNum;
-    }
+    } */
 
 
 
@@ -36,14 +36,14 @@ public class SharedViewModel extends ViewModel {
      * Electromagnet Things
      */
 
-    public void setElectromagnetToggleNum(Integer input) {electromagnetPowerNum.setValue(input);}
+    /* public void setElectromagnetToggleNum(Integer input) {electromagnetPowerNum.setValue(input);}
 
     public LiveData<Integer> getElectromagnetPowerNum() {return electromagnetPowerNum;}
 
 
     public void setElectromagnetDirectionNum(Integer input) {electromagnetDirectionNum.setValue(input);}
 
-    public LiveData<Integer> getElectromagnetDirectionNum() {return electromagnetDirectionNum;}
+    public LiveData<Integer> getElectromagnetDirectionNum() {return electromagnetDirectionNum;} */
 
 
 
@@ -62,7 +62,7 @@ public class SharedViewModel extends ViewModel {
     public LiveData<Integer> getHumidityReading() {return humidityReading;}
 
 
-    public void setVibrationReading(Integer input) {vibrationReading.setValue(input);}
+    public void setVibrationReading(Integer input) {decibelReading.setValue(input);}
 
-    public LiveData<Integer> getVibrationReading() {return vibrationReading;}
+    public LiveData<Integer> getDecibelReading() {return decibelReading;}
 }

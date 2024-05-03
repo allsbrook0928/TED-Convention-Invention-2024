@@ -5,7 +5,6 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.hardware.Sensor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -21,6 +20,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.viewbinding.BuildConfig;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Integer[] domeSensorArr = {0, 0, 0}; // Array for sensor readings
     Integer[] domeAverageSensorArr = {0, 0}; // Array for average sensor readings
 
-    SensorLog temperatureSensorLog; // Log for keeping track of temperature sensor history
-    SensorLog humiditySensorLog; // Log for keeping track of humidity sensor history
+    // SensorLog temperatureSensorLog; // Log for keeping track of temperature sensor history
+    // SensorLog humiditySensorLog; // Log for keeping track of humidity sensor history
 
     private Calendar calendar;
 
@@ -97,8 +97,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         sp = getSharedPreferences("AppData", Context.MODE_PRIVATE); // Set up shared preferences to handle history
 
-        temperatureSensorLog = new SensorLog(sp, "temperature");
-        humiditySensorLog = new SensorLog(sp, "humidity");
+        // temperatureSensorLog = new SensorLog(sp, "temperature");
+        // humiditySensorLog = new SensorLog(sp, "humidity");
 
         calendar = Calendar.getInstance();
 
@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mContext = this; // Get context for activity
 
         // Set up viewModel to observe directionNum, runs lambda function when there is a change
-        viewModel.getDirectionNum().observe(this, item -> {
+        /* viewModel.getDirectionNum().observe(this, item -> {
             if(isRobotConfigured) {
                 // Write to characteristic, pass the direction that is being passed to feather
                 ConnectionManager.INSTANCE.writeCharacteristic(robotDevice, robotCharList.get(robotCharSize - 1), TurtleListeners.Companion.hexToBytes(Integer.toHexString(item)));
@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 // Write to characteristic, pass the direction that is being passed to feather
                 ConnectionManager.INSTANCE.writeCharacteristic(robotDevice, robotCharList.get(robotCharSize - 3), TurtleListeners.Companion.hexToBytes(Integer.toHexString(item)));
             }
-        });
+        }); */
 
         /**** Background Thread to read BLE characteristics for new data ****/
         new Thread(() -> {
@@ -198,8 +198,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         SystemClock.sleep(5000); // Wait
 
                         // Update daily averages
-                        temperatureSensorLog.setDayAverage(SensorLog.previousDay(cachedDay), domeAverageSensorArr[0]);
-                        humiditySensorLog.setDayAverage(SensorLog.previousDay(cachedDay), domeAverageSensorArr[1]);
+                        // temperatureSensorLog.setDayAverage(SensorLog.previousDay(cachedDay), domeAverageSensorArr[0]);
+                        // humiditySensorLog.setDayAverage(SensorLog.previousDay(cachedDay), domeAverageSensorArr[1]);
                     }
 
                     if (cachedWeek != calendar.get(Calendar.WEEK_OF_MONTH)) {
@@ -208,8 +208,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         sp.edit().putInt("week", cachedWeek).apply();
 
                         // Update weekly averages
-                        temperatureSensorLog.setWeekAverage(SensorLog.previousWeek(cachedWeek));
-                        humiditySensorLog.setWeekAverage(SensorLog.previousWeek(cachedWeek));
+                        // temperatureSensorLog.setWeekAverage(SensorLog.previousWeek(cachedWeek));
+                        // humiditySensorLog.setWeekAverage(SensorLog.previousWeek(cachedWeek));
                     }
 
 
@@ -241,20 +241,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new InformationFragment()).commit();
                 break;
-            case R.id.nav_controller:
-                navigationView.setCheckedItem(R.id.nav_controller);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ControllerFragment()).commit();
-                break;
             case R.id.nav_sensor_information:
                 navigationView.setCheckedItem(R.id.nav_sensor_information);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new SensorFragment()).commit();
-                break;
-            case R.id.nav_sensor_history:
-                navigationView.setCheckedItem(R.id.nav_sensor_history);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new HistoryFragment()).commit();
                 break;
         }
 
@@ -284,15 +274,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){ // Switch on item id
-            case R.id.config_robot: // If "Configure Robot" option
+        // Switch on item id
+        /* case R.id.config_robot: // If "Configure Robot" option
                 Intent robotIntent = new Intent(MainActivity.this, ScanActivity.class);
                 startActivityForResult(robotIntent, RESULT_ROBOT_DEVICE_NAME); // Start ScanActivity to pair w/BLE Device and return device object (feather in robot)
-                break;
-            case R.id.config_dome: // If "Configure Dome" option
-                Intent domeIntent = new Intent(MainActivity.this, ScanActivity.class);
-                startActivityForResult(domeIntent, RESULT_DOME_DEVICE_NAME); // Start ScanActivity to pair w/BLE Device and return device object (feather on dome)
-                break;
+                break; */
+        if (item.getItemId() == R.id.config_dome) { // If "Configure Dome" option
+            Intent domeIntent = new Intent(MainActivity.this, ScanActivity.class);
+            startActivityForResult(domeIntent, RESULT_DOME_DEVICE_NAME); // Start ScanActivity to pair w/BLE Device and return device object (feather on dome)
         }
         return super.onOptionsItemSelected(item);
     }

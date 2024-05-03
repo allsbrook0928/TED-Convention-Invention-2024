@@ -15,13 +15,13 @@
   -->
 
 <resources>
-    <string name="app_name">Turtle Robot</string>
+    <string name="app_name">TED Monitoring</string>
     <string name="ble_playground">BLE Playground</string>
     <string name="config_robot">Configure Robot</string>
     <string name="config_dome">Configure Dome</string>
     <string name="information">Information</string>
     <string name="controller">Controller</string>
-    <string name="sensor_information">Sensor Information</string>
+    <string name="sensor_information">Live Sensor Readings</string>
     <string name="sensor_history">Sensor History</string>
     <string name="robot_controller">Robot Controller</string>
     <string name="sensors">Sensors</string>

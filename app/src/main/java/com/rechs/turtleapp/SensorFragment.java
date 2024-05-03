@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.viewbinding.BuildConfig;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -31,7 +32,7 @@ public class SensorFragment extends Fragment {
 
     private TextView mTextViewTemperature;
     private TextView mTextviewHumidity;
-    private TextView mTextViewVibration;
+    private TextView mTextViewDecibels;
 
 
 
@@ -94,7 +95,7 @@ public class SensorFragment extends Fragment {
 
         mTextViewTemperature = view.findViewById(R.id.textview_temperature_text);
         mTextviewHumidity = view.findViewById(R.id.textview_humidity_text);
-        mTextViewVibration = view.findViewById(R.id.textview_vibration_text);
+        mTextViewDecibels = view.findViewById(R.id.textview_vibration_text);
 
 
         /**** Setting observers to update text when new info arrives *****/
@@ -106,13 +107,9 @@ public class SensorFragment extends Fragment {
             mTextviewHumidity.setText(String.format(Locale.US, "%3d%%", item));
         });
 
-        viewModel.getVibrationReading().observe(getViewLifecycleOwner(), item -> {
+        viewModel.getDecibelReading().observe(getViewLifecycleOwner(), item -> {
             mainHandler.post(() -> {
-                if(item == 1) {
-                    mTextViewVibration.setText(String.format(Locale.US, "TRIGGERED"));
-                } else { // Else if it's 0
-                    mTextViewVibration.setText(String.format(Locale.US, "OFF"));
-                }
+                mTextViewDecibels.setText(String.format(Locale.US, "%3d%%", item));
             });
         });
 

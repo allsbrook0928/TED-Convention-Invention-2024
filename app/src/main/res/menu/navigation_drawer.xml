@@ -8,32 +8,16 @@
             android:id="@+id/nav_information"
             android:icon="@drawable/ic_baseline_help_outline_24"
             android:title="@string/information" />
+        <item
+            android:id="@+id/nav_sensor_information"
+            android:icon="@drawable/ic_sensor"
+            android:title="@string/sensor_information" />
     </group>
 
 
-    <item android:title="@string/robot_controller">
-        <menu>
-            <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/nav_controller"
-                    android:icon="@drawable/ic_snes_controller_filled"
-                    android:title="@string/controller" />
-            </group>
-        </menu>
-    </item>
-
     <item android:title="@string/sensors">
         <menu>
-            <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/nav_sensor_information"
-                    android:icon="@drawable/ic_sensor"
-                    android:title="@string/sensor_information" />
-                <item
-                    android:id="@+id/nav_sensor_history"
-                    android:icon="@drawable/ic_baseline_show_chart_24"
-                    android:title="@string/sensor_history" />
-            </group>
+            <group android:checkableBehavior="single"></group>
         </menu>
     </item>
 

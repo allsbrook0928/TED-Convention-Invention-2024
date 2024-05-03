@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_orange_light">
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/textview_information_header"
@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:fontFamily="@font/lato_bold"
-        android:text="Vibration Sensor"
+        android:text="Noise"
         android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,8 +87,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lato"
-        android:text="OFF"
-        android:textColor="#E63E3E"
+        android:text="0 dB"
+        android:textColor="#000000"
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="@+id/textview_vibration_header"
         app:layout_constraintStart_toStartOf="@+id/textview_vibration_header"
